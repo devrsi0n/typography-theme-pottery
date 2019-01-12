@@ -1,0 +1,38 @@
+{
+  "name": "typography-theme-pottery",
+  "version": "0.0.2",
+  "description": "A Chinese fonts first theme for Typography.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "babel src --out-dir lib/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devrsi0n/typography-theme-pottery.git"
+  },
+  "keywords": [
+    "typography",
+    "typography-theme",
+    "css"
+  ],
+  "author": "devrsi0n",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devrsi0n/typography-theme-pottery/issues"
+  },
+  "homepage": "https://github.com/devrsi0n/typography-theme-pottery#readme",
+  "dependencies": {
+    "gray-percentage": "^2.0.0",
+    "typeface-merriweather": "^0.0.54",
+    "typeface-montserrat": "^0.0.54",
+    "typography-breakpoint-constants": "^0.16.18"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}

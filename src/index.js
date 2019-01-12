@@ -1,0 +1,122 @@
+import gray from 'gray-percentage';
+import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants';
+import 'typeface-montserrat';
+import 'typeface-merriweather';
+
+export const sansSerifFontFamilies = [
+  // 西文
+  'Montserrat',
+
+  // 'Helvetica Neue', // <mac/无衬线>, 优于 Helvetica
+  // Helvetica, // <mac/无衬线>
+  // 'Tahoma', // <win/无衬线>, 好于 Arial
+  // 'Arial', // <win/无衬线>
+
+  // 中文
+  'PingFang SC', // 苹方, <mac>
+  'Hiragino Sans GB', // 冬青黑体, <mac>
+  'Microsoft YaHei', // 微软雅黑, win
+  'Heiti SC', // 黑体-简, win
+  'WenQuanYi Micro Hei', // 文泉驿微米黑，<Linux>
+
+  // fallback
+  'sans-serif',
+];
+
+export const serifFontFamilies = [
+  // 西文
+  'Merriweather',
+  'Georgia',
+
+  // 中文
+  'Source Han Serif SC', // 思源宋体
+  'STSong', // 华文宋体, mac
+  'SimSun', // 中易宋体, win
+  'AR PL Sungti', // 文鼎简报宋, linux
+
+  // fallback
+  'serif',
+];
+
+export default {
+  title: 'typography-theme-pottery',
+  baseFontSize: '16px',
+  baseLineHeight: 1.75,
+  scaleRatio: 5 / 2,
+  headerFontFamily: sansSerifFontFamilies,
+  bodyFontFamily: serifFontFamilies,
+  bodyColor: 'hsla(0,0%,0%,0.9)',
+  headerWeight: 900,
+  bodyWeight: 400,
+  boldWeight: 700,
+  overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
+    blockquote: {
+      ...scale(1 / 5),
+      color: gray(41),
+      fontStyle: 'italic',
+      paddingLeft: rhythm(13 / 16),
+      marginLeft: rhythm(-1),
+      borderLeft: `${rhythm(3 / 16)} solid ${gray(10)}`,
+    },
+    'blockquote > :last-child': {
+      marginBottom: 0,
+    },
+    'blockquote cite': {
+      ...adjustFontSizeTo(options.baseFontSize),
+      color: options.bodyColor,
+      fontWeight: options.bodyWeight,
+    },
+    'blockquote cite:before': {
+      content: '"— "',
+    },
+    ul: {
+      listStyle: 'disc',
+    },
+    'ul,ol': {
+      marginLeft: 0,
+    },
+    [MOBILE_MEDIA_QUERY]: {
+      'ul,ol': {
+        marginLeft: rhythm(1),
+      },
+      blockquote: {
+        marginLeft: rhythm(-3 / 4),
+        marginRight: 0,
+        paddingLeft: rhythm(9 / 16),
+      },
+    },
+    'h1,h2,h3,h4,h5,h6': {
+      marginTop: rhythm(2),
+    },
+    'h1,h2,h3,h4,h5,h6 > a': {
+      fontFamily: sansSerifFontFamilies.join(', '),
+    },
+    h4: {
+      letterSpacing: '0.140625em',
+      textTransform: 'uppercase',
+    },
+    h6: {
+      fontStyle: 'italic',
+    },
+    a: {
+      boxShadow: '0 1px 0 0 currentColor',
+      color: '#03a9f4',
+      textDecoration: 'none',
+    },
+    'a:hover,a:active': {
+      boxShadow: 'none',
+    },
+    'mark,ins': {
+      background: '#03a9f4',
+      color: 'white',
+      padding: `${rhythm(1 / 16)} ${rhythm(1 / 8)}`,
+      textDecoration: 'none',
+    },
+    'p code': {
+      fontSize: '1.1rem'
+    },
+    'li code': {
+      fontSize: '1rem'
+    },
+  }),
+};
