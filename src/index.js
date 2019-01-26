@@ -29,14 +29,34 @@ export const serifFontFamilies = [
   'Georgia',
 
   // 中文
-  'Source Han Serif SC', // 思源宋体
-  'STSong', // 华文宋体, mac
+  'Noto Serif CJK SC',
+  'Source Han Serif SC',
+  'Source Han Serif CN', // 思源宋体
+  'Songti SC', // 华文宋体, mac
   'SimSun', // 中易宋体, win
+  'STSong', // 华文宋体
   'AR PL Sungti', // 文鼎简报宋, linux
 
   // fallback
   'serif',
 ];
+
+function isHighDensity() {
+  return (
+    typeof window !== `undefined` &&
+    ((window.matchMedia &&
+      (window.matchMedia(
+        'only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)'
+      ).matches ||
+        window.matchMedia(
+          'only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)'
+        ).matches)) ||
+      (window.devicePixelRatio && window.devicePixelRatio > 1.3))
+  );
+}
+const bodyFontFamily = isHighDensity()
+  ? serifFontFamilies
+  : sansSerifFontFamilies;
 
 export default {
   title: 'typography-theme-pottery',
@@ -44,12 +64,15 @@ export default {
   baseLineHeight: 1.75,
   scaleRatio: 5 / 2,
   headerFontFamily: sansSerifFontFamilies,
-  bodyFontFamily: serifFontFamilies,
+  bodyFontFamily: bodyFontFamily,
   bodyColor: 'hsla(0,0%,0%,0.9)',
   headerWeight: 900,
   bodyWeight: 400,
   boldWeight: 700,
   overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
+    html: {
+      'text-rendering': 'optimizeLegibility',
+    },
     blockquote: {
       ...scale(1 / 5),
       color: gray(41),
@@ -113,10 +136,10 @@ export default {
       textDecoration: 'none',
     },
     'p code': {
-      fontSize: '1.1rem'
+      fontSize: '1.1rem',
     },
     'li code': {
-      fontSize: '1rem'
+      fontSize: '1rem',
     },
   }),
 };
