@@ -122,12 +122,12 @@ export default {
       fontStyle: 'italic',
     },
     a: {
-      boxShadow: '0 1px 0 0 currentColor',
+      boxShadow: 'none',
       color: '#03a9f4',
       textDecoration: 'none',
     },
     'a:hover,a:active': {
-      boxShadow: 'none',
+      boxShadow: '0 1px 0 0 currentColor',
     },
     'mark,ins': {
       background: '#03a9f4',

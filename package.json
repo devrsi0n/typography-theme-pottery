@@ -1,6 +1,6 @@
 {
   "name": "typography-theme-pottery",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Chinese fonts first theme for Typography.js",
   "main": "lib/index.js",
   "scripts": {
