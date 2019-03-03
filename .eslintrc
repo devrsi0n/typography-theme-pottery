@@ -1,0 +1,7 @@
+{
+  "root": true,
+  "extends": "@devrsi0n/eslint-config-base",
+  "rules": {
+    "no-undef": ["warn"]
+  }
+}
