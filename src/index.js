@@ -94,7 +94,7 @@ export function getTheme(sansSerif, serif) {
         color: gray(41),
         fontStyle: 'italic',
         paddingLeft: rhythm(13 / 16),
-        marginLeft: rhythm(-1),
+        marginLeft: 0,
         borderLeft: `${rhythm(3 / 16)} solid ${gray(10)}`,
       },
       'blockquote > :last-child': {
@@ -108,9 +108,9 @@ export function getTheme(sansSerif, serif) {
       'blockquote cite:before': {
         content: '"— "',
       },
-      ul: {
-        listStyle: 'disc',
-      },
+      // ul: {
+      //   listStyle: 'disc',
+      // },
       'ul,ol': {
         marginLeft: 0,
       },
