@@ -1,14 +1,19 @@
-/* eslint-disable prettier/prettier */
 import gray from 'gray-percentage';
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants';
-import 'typeface-montserrat';
-import 'typeface-merriweather';
+
+const emojiFonts = ['Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'];
 
 export const sansSerifFontFamilies = [
   // 西文
-  'Montserrat',
-
-  // '-apple-system-font',
+  '-apple-system',
+  'BlinkMacSystemFont',
+  'Segoe UI',
+  'Roboto',
+  'Oxygen',
+  'Ubuntu',
+  'Cantarell',
+  'Open Sans',
+  'Helvetica Neue',
   // 'Helvetica Neue', // <mac/无衬线>, 优于 Helvetica
   // 'Helvetica', // <mac/无衬线>
   // 'Tahoma', // <win/无衬线>, 好于 Arial
@@ -24,12 +29,15 @@ export const sansSerifFontFamilies = [
 
   // fallback
   'sans-serif',
+  ...emojiFonts,
 ];
 
 export const serifFontFamilies = [
   // 西文
-  'Merriweather',
   'Georgia',
+  'Palatino Linotype',
+  'Book Antiqua',
+  'Palatino',
 
   // 中文
   'Noto Serif CJK SC',
@@ -42,23 +50,24 @@ export const serifFontFamilies = [
 
   // fallback
   'serif',
+  ...emojiFonts,
 ];
 
 function isHighDensity() {
   return (
-    typeof window !== 'undefined'
-    && ((window.matchMedia
-      && (window.matchMedia(
-        'only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)',
-      ).matches
-        || window.matchMedia(
-          'only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)',
-        ).matches))
-      || (window.devicePixelRatio && window.devicePixelRatio > 1.3))
+    typeof window !== 'undefined' &&
+    ((window.matchMedia &&
+      (window.matchMedia(
+        'only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)'
+      ).matches ||
+        window.matchMedia(
+          'only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)'
+        ).matches)) ||
+      (window.devicePixelRatio && window.devicePixelRatio > 1.3))
   );
 }
 
-const getFontStr = (arr) => {
+const getFontStr = arr => {
   const str = JSON.stringify(arr);
   return str.slice(1, str.length - 1);
 };
